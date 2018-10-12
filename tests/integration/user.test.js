@@ -20,7 +20,8 @@ describe('/api/users', () => {
                 .send(user);
         };
 
-        it('should response with 400 status with message ""username" is required" when given user does not have "username" property', async function () {
+        it('should response with 400 status with message ""username" is required" ' +
+            'when given user does not have "username" property', async function () {
             const res = await execute({
                 password: "pass"
             });
@@ -29,7 +30,8 @@ describe('/api/users', () => {
             expect(res.body.message[0].message).toBe('"username" is required')
         });
 
-        it('should response with 400 status with message ""password" is required" when given user does not have "password" property', async function () {
+        it('should response with 400 status with message ""password" is required" ' +
+            'when given user does not have "password" property', async function () {
             const res = await execute({
                 username: "user"
             });
