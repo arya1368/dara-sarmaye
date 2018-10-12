@@ -1,8 +1,9 @@
 const express = require('express');
 const validate = require('./user.request.validator');
-const dal = require('./user.dal');
+const UserService = require('./user.service');
 
 const router = express.Router();
+const service = new UserService();
 
 router.post('/', async (req, res) => {
     const result = validate(req.body);
@@ -12,7 +13,7 @@ router.post('/', async (req, res) => {
         });
     }
 
-    const user = await dal.save(result.value);
+    const user = await service.save(result.value);
     res.status(201).send(user)
 });
 
